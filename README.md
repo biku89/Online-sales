@@ -1,4 +1,4 @@
-# Online-sales
+# Online sales
 This project contains online sales data that can be used to analyze sales trends and performance across different regions. 
 The CSV file includes information about the sales of individual products in various countries.
 
@@ -102,6 +102,78 @@ Throughout the entire period, North America generated the highest income.
 The chart indicates several periods with clear peaks in revenues. The highest values can be observed in early January, February, April, and August 2024.
 Revenues are highly variable throughout the period with many peaks and troughs. 
 This suggests a dynamic sales pattern, which could be due to seasonal trends or promotions.
+
+
+Now we will check how sales looked on specific days and months.
+
+`SELECT 
+    CASE
+        WHEN DAYOFWEEK(`Date`) = 1 THEN 7
+        ELSE DAYOFWEEK(`Date`) - 1
+    END AS day_of_week_number,
+    DAYNAME(`Date`) AS day_of_week, 
+    ROUND(SUM(`Total Revenue`), 2) AS Total_Revenue 
+FROM online_sales_data
+GROUP BY 
+    day_of_week_number,
+    day_of_week
+ORDER BY 
+    day_of_week_number;`
+
+![obraz](https://github.com/biku89/Online-sales/assets/169537978/c3004dab-9efc-4a94-92a7-69750da8d85e)
+
+`SELECT 
+    DATE_FORMAT(`Date`, '%Y-%m') AS Month,
+    ROUND(SUM(`Total Revenue`), 2) AS Total_Revenue
+FROM 
+    online_sales_data
+GROUP BY 
+    DATE_FORMAT(`Date`, '%Y-%m')
+ORDER BY 
+    DATE_FORMAT(`Date`, '%Y-%m');`
+
+![obraz](https://github.com/biku89/Online-sales/assets/169537978/895a2b40-8b66-4ccf-ad56-dadaca211a5f)
+
+- Sales throughout the week appear to be quite stable, except for Thursday, which has noticeably lower revenue.
+Tuesday is the most profitable day, which may suggest special promotions. Friday and the weekend (Saturday, Sunday) indicate increased customer traffic.
+
+-Monthly sales show a trend of increasing revenue in each month of 2024. 
+The highest revenue was achieved at the beginning of the year in January, and the lowest in August.
+
+Let's examine the correlation between Unit Price and Total Revenue.
+
+`WITH sums_and_counts AS (
+    SELECT 
+        Region,
+        COUNT(*) AS n,
+        SUM(`Unit Price`) AS sum_x,
+        SUM(`Total Revenue`) AS sum_y,
+        SUM(`Unit Price` * `Total Revenue`) AS sum_xy,
+        SUM(POWER(`Unit Price`, 2)) AS sum_x2,
+        SUM(POWER(`Total Revenue`, 2)) AS sum_y2
+    FROM online_sales_data
+    GROUP BY Region
+)
+SELECT 
+    Region,
+    (n * sum_xy - sum_x * sum_y) / 
+    SQRT((n * sum_x2 - POWER(sum_x, 2)) * (n * sum_y2 - POWER(sum_y, 2))) AS correlation
+FROM sums_and_counts;`
+
+![obraz](https://github.com/biku89/Online-sales/assets/169537978/f8c6d903-6da3-4756-8fbb-7df156c8d9d5)
+
+A correlation close to 1 indicates a strong positive linear relationship. These values suggest that as Unit Price increases, Total Revenue also increases in a predictable and proportional manner.
+
+There is a strong positive correlation between Unit Price and Total Revenue in all three regions.
+
+The strongest correlation is observed in North America, indicating that changes in unit prices have the greatest impact on total revenues here.
+
+High correlation values across all regions may indicate that pricing strategy is a key factor influencing revenues in these areas. This suggests the need for careful management of unit prices to maximize revenue.
+
+
+
+
+
 
 
 
