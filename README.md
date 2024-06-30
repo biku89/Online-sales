@@ -70,4 +70,23 @@ Europe spent 18,646.16 PLN on cosmetic products.
 Asia spent 14,326.52 PLN on purchases in the Sports category.
 
 
+We will see which country spends the most on individual products and which country makes the most purchases.
+
+`SELECT `Product Name`, `Region`, ROUND(SUM(`Unit Price`),2) AS Top_Unit_Price FROM online_sales_data 
+GROUP BY `Product Name`, `Region`
+ORDER BY Top_Unit_Price DESC LIMIT 10;`
+
+![obraz](https://github.com/biku89/Online-sales/assets/169537978/f125156d-3722-474e-8925-d60755c9c9c6)
+
+`SELECT `Product Name`, `Region`, SUM(`Units Sold`) AS Top_Unit_Sold FROM online_sales_data 
+GROUP BY `Product Name`, `Region`
+ORDER BY Top_Unit_Sold DESC LIMIT 10;`
+
+![obraz](https://github.com/biku89/Online-sales/assets/169537978/27d47909-026b-4943-92ae-4fb568f0ac08)
+
+Residents of Asia buy the largest quantity of specific products.
+However, when it comes to making the most expensive transactions (in the Top 10), 80% of transactions belong to North America.
+
+
+
 
