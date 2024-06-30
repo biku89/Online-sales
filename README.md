@@ -19,4 +19,5 @@ We will look into the most popular payment methods. We will check which products
 After importing the data into MySQL, we proceed to check how sales look for each region and individual product, as well as the preferred payment method in each country.
 
 SELECT `Region`, COUNT(*) AS Result FROM online_sales_data GROUP BY `Region`;
+
 ![obraz](https://github.com/biku89/Online-sales/assets/169537978/3c9ff300-b8d6-476f-ab45-7e5d1a61a23a)
