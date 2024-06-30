@@ -180,7 +180,7 @@ Conclusion:
 
 
 
-The data has been downloaded from:
+Data source:
 https://www.kaggle.com/datasets/shreyanshverma27/online-sales-dataset-popular-marketplace-data
 
 
