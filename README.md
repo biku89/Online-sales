@@ -87,6 +87,24 @@ ORDER BY Top_Unit_Sold DESC LIMIT 10;`
 Residents of Asia buy the largest quantity of specific products.
 However, when it comes to making the most expensive transactions (in the Top 10), 80% of transactions belong to North America.
 
+`SELECT `Region`, ROUND(SUM(`Total Revenue`), 2) AS Total_Revenue FROM online_sales_data
+GROUP BY `Region`
+ORDER BY `Total_Revenue` DESC;`
+
+![obraz](https://github.com/biku89/Online-sales/assets/169537978/30b4e57c-d8ff-4ea5-b1e9-2edb58fe066e)
+
+Throughout the entire period, North America generated the highest income.
+
+- I visualized revenues over all available days using Power BI.
+
+![obraz](https://github.com/biku89/Online-sales/assets/169537978/ff826b94-314f-4afd-90c5-d319da684158)
+
+The chart indicates several periods with clear peaks in revenues. The highest values can be observed in early January, February, April, and August 2024.
+Revenues are highly variable throughout the period with many peaks and troughs. 
+This suggests a dynamic sales pattern, which could be due to seasonal trends or promotions.
+
+
+
 
 
 
