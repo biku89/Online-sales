@@ -43,4 +43,31 @@ ORDER BY Popular_Method;`
   In North America, credit card is preferred.
 
 
+Now we will check how expenditures on specific products look in different countries.
+
+`SELECT `Product Category`, `Region`, SUM(`Units Sold`) AS TheBest_Category FROM online_sales_data 
+GROUP BY `Product Category`, `Region`
+ORDER BY TheBest_Category DESC;`
+
+![obraz](https://github.com/biku89/Online-sales/assets/169537978/cc672f4f-1962-4783-bbc8-43f5ac8a8c8c)
+
+`SELECT `Product Category`, `Region`, ROUND(SUM(`Total Revenue`),2) AS Total_Revenue FROM online_sales_data 
+GROUP BY `Product Category`, `Region`
+ORDER BY Total_Revenue DESC;`
+
+![obraz](https://github.com/biku89/Online-sales/assets/169537978/66dcd61b-8a7b-4ec2-b1b0-49fc65788864)
+
+Asia makes the most purchases in the category 'Clothing and Sports'.
+
+Europe leads in the category 'Home Appliances and Cosmetics'.
+
+North America dominates in the category 'Books and Electronics'.
+
+North America spent 34,982.41 PLN on electronics alone.
+
+Europe spent 18,646.16 PLN on cosmetic products.
+
+Asia spent 14,326.52 PLN on purchases in the Sports category.
+
+
 
