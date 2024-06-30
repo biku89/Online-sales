@@ -173,6 +173,11 @@ High correlation values across all regions may indicate that pricing strategy is
 
 
 
+The data has been downloaded from:
+https://www.kaggle.com/datasets/shreyanshverma27/online-sales-dataset-popular-marketplace-data
+
+
+
 
 
 
